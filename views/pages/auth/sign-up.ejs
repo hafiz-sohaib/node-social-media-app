@@ -1,0 +1,54 @@
+<%- include('../../layout/header') %>
+
+<style>
+
+input.form-control{
+    padding: 8px 15px;
+    font-size: 17px;
+}
+div.text-danger{
+    font-size: 16px;
+    margin: 3px 0 0 3px;
+}
+
+</style>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-10 col-md-8 col-lg-5 mx-auto">
+            <form action="/auth/sign-up" method="post">
+                <h1 class="text-center display-5 mb-4">SignUp</h1>
+
+                <% if (typeof message!='undefined' && typeof message=='string') { %>
+                    <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>Success</strong> <%= message %>
+                    </div>
+                <% } %>
+
+                <div class="mb-3">
+                    <input type="text" name="first_name" class="form-control" placeholder="First Name" />
+                    <div class="text-danger"><%= (typeof message!='undefined') ? message.first_name : '' %></div>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="last_name" class="form-control" placeholder="Last Name" />
+                    <div class="text-danger"><%= (typeof message!='undefined') ? message.last_name : '' %></div>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="email" class="form-control" placeholder="Email" />
+                    <div class="text-danger"><%= (typeof message!='undefined') ? message.email : '' %></div>
+                </div>
+                <div class="mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                    <div class="text-danger"><%= (typeof message!='undefined') ? message.password : '' %></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary">SignUp</button>
+                    <p class="mb-0">Already have account?&nbsp;&nbsp;Please <a href="/auth/sign-in">SignIn</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../../layout/footer') %>
